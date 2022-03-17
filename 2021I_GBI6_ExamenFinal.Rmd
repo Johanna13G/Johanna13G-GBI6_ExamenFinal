@@ -121,14 +121,13 @@ df_long <- long_df(df)
 ### [0.5 PUNTOS] 1.5 A partir de la data ```df_long```, genere un **Descriptive table** (librería ```sjPlot```) y guárdelo en el subdirectorio "result"  con el nombre **mRNA_expr_summary.doc** (previamente debe seleccionar las celdas adecuadas con funciones de la librería ```dplyr``` en conjunto con el operador ```%>%```). 
 ```{r desc_table}
 # Escriba el código para crear el Descriptive table 
-
 library(sjPlot)
 library(sjmisc)
 
-cancer_mama <- df_long %>% group_by(gen) %>% mutate(row = row_number()) %>%
+tabla_genes <- df_long %>% group_by(gen) %>% mutate(row = row_number()) %>%
     tidyr::pivot_wider(names_from = gen, values_from = expresion_level) %>%
     select(-row) 
-descr(cancer_mama) %>% tab_df(title = "Expresion de genes para los diferentes tipos de cancer",
+descr(tabla_genes) %>% tab_df(title = "Expresion de genes para los diferentes tipos de cancer",
                               file = "results/mRNA_expr_summary.doc") 
 ```
 
@@ -137,7 +136,7 @@ descr(cancer_mama) %>% tab_df(title = "Expresion de genes para los diferentes ti
 
 ```{tex}
 # Escriba aquí su interpretación 
-
+Como se puede observar en la tabla obtenida, el menor valor de sd correponde al gen GADPH, por tanto indica que la mayor parte de los datos de la muestra tienden a estar agrupados cerca de su media. Por otro lado, el valor más alto de sd correponde a GATA3 lo que indica que los datos se extienden sobre un rango de valores más amplio.También se puede observar que los valores más altos de la media y la mediana corresponden a MUC1 sin embargo al ser valores diferentes puede indicar la existencias de valores atípicos.
 ```
 
 
@@ -182,7 +181,8 @@ cancertype_boxplots = lapply(cancertype, function(x) {ggplot(x, aes(dataset, exp
 ### [0.5 PUNTOS] 2.3 Guarde en el subdirectorio ```result``` el tercer plot de la lista ```cancertype_boxplots``` con el nombre ```boxplot3.png```. La definición de a figura debe ser de 300dpi. 
 ```{r boxplot3}
 # Escriba el código para guardar la tercera figura de la lista. 
-
+cancertype_boxplots[3]
+ggsave("results/boxplot3.png", width = 6, height = 8, dpi = 300)
 
 ```
 
