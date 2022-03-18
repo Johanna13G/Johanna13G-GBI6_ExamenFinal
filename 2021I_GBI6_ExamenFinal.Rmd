@@ -348,8 +348,8 @@ genes <- reg_gen_expression("GATA3")
 ### [0.5 PUNTOS] 2.6. Guarde en el subdirectorio ```result``` el onceavo plot de la lista ```reg_genplots``` con el nombre ```regresion11.pdf```. La definición de a figura debe ser de 300dpi. 
 ```{r reg11}
 # Escriba el código para guardar el onceavo plot. 
-graficos_cancer[[5]][[2]]
-ggsave("regresion11.pdf", width = 6, height = 8, dpi = 300)
+genes[[5]][[2]]
+ggsave("results/regresion11.pdf", width = 6, height = 8, dpi = 300)
 ```
 
 
@@ -357,7 +357,11 @@ ggsave("regresion11.pdf", width = 6, height = 8, dpi = 300)
 
 ```{tex}
 # Esciba aquí su intepretación
+Interpretación figura boxplot:
+  Se puede observar que la mediana no se ubica en el centro de la caja por tanto presenta asimetría negativa o sesgada a la izquierda pues la parte más larga es la inferior a la mediana. Por tanto se puede establecer que los datos se concentran en la parte superior de la distribución.
 
+Interpretación regresión:
+  En la gráfica se puede observar que existen muchos valores que se encuentran fuera del rango permitido por tanto los datos no siguen una distribución normal estándar.
 ```
 
 ## 3. CONTROL DE LA VERSIÓN [1 PUNTO]. Se verficará en ell repositorio de GitHub. 
